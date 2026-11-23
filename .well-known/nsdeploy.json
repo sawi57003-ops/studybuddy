@@ -1,0 +1,18 @@
+{
+  "exports": [
+    {
+      "aliases": [
+        "studybuddy",
+        "study_buddy"
+      ],
+      "front_man": "study_buddy",
+      "network": "studybuddy",
+      "url": "studybuddy"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  },
+  "protocol": "nsdeploy-link/v1"
+}

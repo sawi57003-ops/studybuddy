@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyBuddy — Learn anything, one quiz at a time</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>📚 StudyBuddy</h1>
+    <p class="tagline">Learn anything, one quiz at a time. Pick a topic, read the lesson, take the quiz, keep your streak alive.</p>
+    <p class="streak" id="streak-line">🔥 Study streak: <strong id="streak-count">0</strong> day(s) · <span id="streak-status">no check-in today yet</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="topics">
+    <h2>Topics</h2>
+    <p class="hint">Six topics with a short lesson and a quiz each. Click a topic to read it, then start its quiz.</p>
+    <div class="topic-grid" id="topic-grid"></div>
+  </section>
+
+  <section id="lesson" hidden>
+    <h2 id="lesson-title"></h2>
+    <div id="lesson-body"></div>
+    <button id="start-quiz-btn" class="btn primary">Start the quiz</button>
+    <button id="close-lesson-btn" class="btn">Close lesson</button>
+  </section>
+
+  <section id="quiz" hidden>
+    <h2 id="quiz-title"></h2>
+    <form id="quiz-form"></form>
+    <button id="submit-quiz-btn" class="btn primary">Check my answers</button>
+    <button id="abandon-quiz-btn" class="btn">Abandon quiz</button>
+    <div id="quiz-result"></div>
+  </section>
+
+  <section id="planner">
+    <h2>Study plan</h2>
+    <form id="plan-form">
+      <label>Topic
+        <select id="plan-topic" required></select>
+      </label>
+      <label>Sessions per week
+        <input id="plan-sessions" type="number" min="1" max="7" value="3" required>
+      </label>
+      <label>Minutes per session
+        <input id="plan-minutes" type="number" min="10" max="180" step="5" value="30" required>
+      </label>
+      <button class="btn primary" type="submit">Create plan</button>
+    </form>
+    <div id="plan-display"></div>
+  </section>
+
+  <section id="notes">
+    <h2>My notes</h2>
+    <form id="note-form">
+      <input id="note-text" type="text" maxlength="280" placeholder="Write a short note to remember..." required>
+      <button class="btn primary" type="submit">Save note</button>
+    </form>
+    <ul id="note-list"></ul>
+  </section>
+
+  <section id="checkin">
+    <h2>Daily check-in</h2>
+    <p>Studied today? Mark it and keep your streak alive. A quiz answer also counts as a check-in.</p>
+    <button id="checkin-btn" class="btn primary">I studied today</button>
+    <p id="checkin-msg"></p>
+  </section>
+
+  <section id="results">
+    <h2>Latest quiz result</h2>
+    <div id="latest-result"><p>No quiz taken yet.</p></div>
+  </section>
+</main>
+
+<section id="assistant" class="assistant wrap" aria-labelledby="assistant-heading">
+  <h2 id="assistant-heading">Ask StudyBuddy</h2>
+  <p>Chat with the StudyBuddy assistant: it explains topics, runs quizzes, saves notes, makes study plans and tracks your streak. It can also ask MathHelper for step-by-step math practice.</p>
+  <p class="assistant-note">Your messages and this page's data go to the LLM provider you choose in the settings below. You confirm anything that cannot be undone before it happens.</p>
+  <p id="assistant-status" role="status">Connecting the assistant… If this message stays, the assistant could not load. You can still use the page directly.</p>
+  <div id="agent-app">
+    <div data-ns-slot="header"></div>
+    <div class="assistant-panels">
+      <div data-ns-slot="chat"></div>
+      <div data-ns-slot="agents"></div>
+    </div>
+    <div data-ns-slot="settings"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>StudyBuddy is a static study companion. Your notes, streak, plans and quiz results live only in this browser (localStorage). No account, no server, no data leaves your device — except what you choose to send to your own LLM provider when the assistant is enabled.</p>
+    <p>For math practice, see our partner site <a id="mathhelper-link" href="https://sawi57003-ops.github.io/">MathHelper</a> — it has step-by-step math problems. The assistant can ask it for you.</p>
+    <p>What StudyBuddy cannot do: answer official exam questions, grade official schoolwork, or teach subjects outside the six topics listed above. For those, ask your teacher.</p>
+  </div>
+</footer>
+
+<script type="module" src="script.js"></script>
+<script type="module" src="site.js"></script>
+</body>
+</html>
